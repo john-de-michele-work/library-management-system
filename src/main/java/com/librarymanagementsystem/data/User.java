@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Entity
-public final class User {
+public class User {
 
     @Id
     private String name;
