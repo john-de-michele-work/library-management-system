@@ -29,4 +29,24 @@ public final class Book {
     @NotNull
     private Integer publicationYear;
 
+    public Book() {}
+
+    public Book(String title, String author, String isbn, Integer publicationYear) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.publicationYear = publicationYear;
+        this.totalCopyCount = 1;
+        this.availableCopyCount = 1;
+    }
+
+    public Book(String title, String author, String isbn, Integer publicationYear, int copies) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.publicationYear = publicationYear;
+        this.totalCopyCount = copies;
+        this.availableCopyCount = copies;
+    }
+
 }
