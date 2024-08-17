@@ -9,10 +9,6 @@ import jakarta.validation.constraints.NotNull;
 public final class Book {
 
     @Id
-    private Long id;
-
-    @NotNull
-    @NotBlank
     private String title;
 
     @NotNull
