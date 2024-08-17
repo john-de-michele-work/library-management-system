@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -36,4 +37,18 @@ public class User {
         this.libraryCard = libraryCard;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(name, user.name) &&
+                Objects.equals(phoneNumber, user.phoneNumber) &&
+                Objects.equals(emailAddress, user.emailAddress) &&
+                Objects.equals(libraryCard, user.libraryCard);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, phoneNumber, emailAddress, libraryCard);
+    }
 }

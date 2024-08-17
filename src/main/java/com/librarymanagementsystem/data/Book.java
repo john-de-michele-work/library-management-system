@@ -5,6 +5,8 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Objects;
+
 @Entity
 public class Book {
 
@@ -45,4 +47,20 @@ public class Book {
         this.availableCopyCount = copies;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book book)) return false;
+        return Objects.equals(title, book.title) &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(totalCopyCount, book.totalCopyCount) &&
+                Objects.equals(availableCopyCount, book.availableCopyCount) &&
+                Objects.equals(isbn, book.isbn) &&
+                Objects.equals(publicationYear, book.publicationYear);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, author, totalCopyCount, availableCopyCount, isbn, publicationYear);
+    }
 }
