@@ -1,9 +1,14 @@
 package com.librarymanagementsystem;
 
 import com.librarymanagementsystem.data.Book;
+import com.librarymanagementsystem.response.BookDetailsResponse;
+import com.librarymanagementsystem.response.Response;
 import org.hibernate.Session;
 
 import java.util.*;
+
+import static com.librarymanagementsystem.BookAvailability.AVAILABLE;
+import static com.librarymanagementsystem.BookAvailability.ISSUED;
 
 public final class BookUtil {
 
@@ -51,6 +56,34 @@ public final class BookUtil {
         session.persist(new Book(title, author, isbn, publicationYear, copies));
         session.beginTransaction().commit();
         return new Response(code, message, errorMessages);
+    }
+
+    public BookDetailsResponse getBookDetails(String title) {
+        int code = 200;
+        String message = "found";
+        List<String> errorMessages = new LinkedList<>();
+
+        if ((null == title) || title.isBlank()) {
+            code = 400;
+            message = "error";
+            errorMessages.add("Title cannot be null or blank!");
+            return new BookDetailsResponse("", "", null, code, message, errorMessages);
+        }
+
+        List<Book> books = session.createSelectionQuery("from Book b where b.title = :title", Book.class)
+                .setParameter("title", title)
+                .getResultList();
+
+        if (books.isEmpty()) {
+            code = 404;
+            message = "not found";
+            errorMessages.add("Title not found!");
+            return new BookDetailsResponse(title, "", null, code, message, errorMessages);
+        } else {
+            Book book = books.getFirst();
+            BookAvailability availability = (book.getAvailableCopyCount() > 0) ? AVAILABLE : ISSUED;
+            return new BookDetailsResponse(book.getTitle(), book.getAuthor(), availability, code, message, errorMessages);
+        }
     }
 
     private InternalResponse errorCheck(String title,
