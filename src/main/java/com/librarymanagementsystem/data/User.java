@@ -35,6 +35,22 @@ public class User {
         this.libraryCard = libraryCard;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public @NotNull @NotBlank String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public String getLibraryCard() {
+        return libraryCard;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

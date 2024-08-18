@@ -48,6 +48,30 @@ public class Book {
         this.availableCopyCount = copies;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public @NotNull @NotBlank String getAuthor() {
+        return author;
+    }
+
+    public Integer getTotalCopyCount() {
+        return totalCopyCount;
+    }
+
+    public Integer getAvailableCopyCount() {
+        return availableCopyCount;
+    }
+
+    public @NotNull @NotBlank String getIsbn() {
+        return isbn;
+    }
+
+    public @NotNull Integer getPublicationYear() {
+        return publicationYear;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
