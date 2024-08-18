@@ -1,6 +1,7 @@
 package com.librarymanagementsystem.persistence;
 
 import com.librarymanagementsystem.data.Book;
+import com.librarymanagementsystem.data.IssuedBook;
 import com.librarymanagementsystem.data.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -23,6 +24,7 @@ public final class SessionFactoryManager {
             Metadata metadata = new MetadataSources(serviceRegistry)
                     .addAnnotatedClass(Book.class)
                     .addAnnotatedClass(User.class)
+                    .addAnnotatedClass(IssuedBook.class)
                     .getMetadataBuilder().build();
             return metadata.getSessionFactoryBuilder().build();
         } catch(Exception ex) {
