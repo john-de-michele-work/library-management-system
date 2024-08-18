@@ -1,7 +1,9 @@
 package com.librarymanagementsystem;
 
 import com.librarymanagementsystem.data.Book;
+import com.librarymanagementsystem.data.User;
 import com.librarymanagementsystem.response.BookDetailsResponse;
+import com.librarymanagementsystem.response.IssuedBookResponse;
 import com.librarymanagementsystem.response.Response;
 import org.hibernate.Session;
 
@@ -19,7 +21,7 @@ public final class BookUtil {
     }
 
     public Response addSingleBook(String title, String author, String isbn, Integer publicationYear) {
-        int code = 200;
+        int code = 201;
         String message = "added";
         List<String> errorMessages = new LinkedList<>();
 
@@ -35,7 +37,7 @@ public final class BookUtil {
     }
 
     public Response addMultipleBooks(String title, String author, String isbn, Integer publicationYear, int copies) {
-        int code = 200;
+        int code = 201;
         String message = "added";
         List<String> errorMessages = new LinkedList<>();
 
@@ -84,6 +86,65 @@ public final class BookUtil {
             BookAvailability availability = (book.getAvailableCopyCount() > 0) ? AVAILABLE : ISSUED;
             return new BookDetailsResponse(book.getTitle(), book.getAuthor(), availability, code, message, errorMessages);
         }
+    }
+
+    public IssuedBookResponse issueBook(String title, String user) {
+        int code = 200;
+        String message = "issued";
+        List<String> errorMessages = new LinkedList<>();
+
+        InternalResponse ir = issueBookErrorCheck(title, user);
+
+        if (ir.isError()) {
+            return new IssuedBookResponse(title, user, null, 0,
+                    ir.getCode(), ir.getMessage(), ir.getErrorMessages());
+        }
+
+        List<User> users = session.createSelectionQuery("from User u where u.name = :user", User.class)
+                .setParameter("user", user)
+                .getResultList();
+
+        if (users.isEmpty()) {
+            code = 404;
+            message = "not found";
+            errorMessages.add("No User by that name!");
+            return new IssuedBookResponse(title, user, null, 0,
+                    code, message, errorMessages);
+        }
+
+        List<Book> books = session.createSelectionQuery("from Book b where b.title = :title", Book.class)
+                .setParameter("title", title)
+                .getResultList();
+
+        if (books.isEmpty()) {
+            code = 404;
+            message = "not found";
+            errorMessages.add("Title not found!");
+            return new IssuedBookResponse(title, user, null, 0,
+                    code, message, errorMessages);
+        } else if (books.getFirst().getAvailableCopyCount() == 0) {
+
+        }
+    }
+
+    private InternalResponse issueBookErrorCheck(String title, String user) {
+        InternalResponse ir = new InternalResponse();
+
+        if ((null == title) || title.isBlank()) {
+            ir.setCode(400);
+            ir.setMessage("error");
+            ir.addErrorMessage("Title cannot be null or blank!");
+            ir.setError();
+        }
+
+        if ((null == user) || user.isBlank()) {
+            ir.setCode(400);
+            ir.setMessage("error");
+            ir.addErrorMessage("User cannot be null or blank!");
+            ir.setError();
+        }
+
+        return ir;
     }
 
     private InternalResponse errorCheck(String title,

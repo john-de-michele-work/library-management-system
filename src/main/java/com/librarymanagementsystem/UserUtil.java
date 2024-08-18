@@ -16,7 +16,7 @@ public final class UserUtil {
     }
 
     public Response addMinimalUser(String name, String phoneNumber) {
-        int code = 200;
+        int code = 201;
         String message = "added";
         List<String> errorMessages = new LinkedList<>();
 
@@ -32,7 +32,7 @@ public final class UserUtil {
     }
 
     public Response addCompleteUserDetails(String name, String phoneNumber, String emailAddress, String libraryCard) {
-        int code = 200;
+        int code = 201;
         String message = "added";
         List<String> errorMessages = new LinkedList<>();
 

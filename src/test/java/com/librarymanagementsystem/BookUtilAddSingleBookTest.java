@@ -25,7 +25,7 @@ public final class BookUtilAddSingleBookTest {
     private static final String GOOD_ISBN = "1234567890";
     private static final Integer GOOD_PUBLICATION_YEAR = 2024;
     private static final Integer ERROR_CODE = 400;
-    private static final Integer GOOD_CODE = 200;
+    private static final Integer GOOD_CODE = 201;
     private static final String ERROR_MESSAGE = "error";
     private static final String GOOD_MESSAGE = "added";
     private static final String TITLE_ERROR = "Title cannot be null or blank!";

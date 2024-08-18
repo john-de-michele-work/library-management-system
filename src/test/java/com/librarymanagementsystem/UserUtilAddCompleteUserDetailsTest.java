@@ -24,7 +24,7 @@ public final class UserUtilAddCompleteUserDetailsTest {
     private static final String GOOD_EMAIL_ADDRESS = "foo@bar.com";
     private static final String GOOD_LIBRARY_CARD = "1234567890";
     private static final Integer ERROR_CODE = 400;
-    private static final Integer GOOD_CODE = 200;
+    private static final Integer GOOD_CODE = 201;
     private static final String ERROR_MESSAGE = "error";
     private static final String GOOD_MESSAGE = "added";
     private static final String NAME_ERROR = "Name cannot be null or blank!";
