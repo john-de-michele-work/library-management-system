@@ -1,8 +1,8 @@
-package com.librarymanagementsystem;
+package com.librarymanagementsystem.response;
 
 import java.util.List;
 
-public final class Response {
+public class Response {
 
     private final int code;
     private final String message;
