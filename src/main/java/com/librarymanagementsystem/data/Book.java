@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
-@Entity
+@Entity(name = "Book")
 public class Book {
 
     @Id
