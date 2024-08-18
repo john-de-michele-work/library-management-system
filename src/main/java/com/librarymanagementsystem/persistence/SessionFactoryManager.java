@@ -1,6 +1,10 @@
 package com.librarymanagementsystem.persistence;
 
+import com.librarymanagementsystem.data.Book;
+import com.librarymanagementsystem.data.User;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -16,7 +20,11 @@ public final class SessionFactoryManager {
             Configuration configuration = new Configuration();
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
-            return configuration.buildSessionFactory(serviceRegistry);
+            Metadata metadata = new MetadataSources(serviceRegistry)
+                    .addAnnotatedClass(Book.class)
+                    .addAnnotatedClass(User.class)
+                    .getMetadataBuilder().build();
+            return metadata.getSessionFactoryBuilder().build();
         } catch(Exception ex) {
             LOGGER.error(ex.getMessage(), ex.getCause());
         }
