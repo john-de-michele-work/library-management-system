@@ -22,6 +22,7 @@ public class Book {
     private Integer availableCopyCount;
 
     @NotNull
+    @NotBlank
     private String isbn;
 
     @NotNull
