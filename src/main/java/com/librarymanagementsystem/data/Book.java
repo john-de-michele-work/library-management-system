@@ -72,6 +72,14 @@ public class Book {
         return publicationYear;
     }
 
+    public void issueBook() {
+        this.availableCopyCount--;
+    }
+
+    public void returnBook() {
+        this.availableCopyCount++;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
