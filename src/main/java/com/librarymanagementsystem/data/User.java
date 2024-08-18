@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
-import java.util.UUID;
 
 @Entity(name = "User")
 public class User {
@@ -20,8 +19,7 @@ public class User {
 
     private String emailAddress;
 
-    @org.hibernate.validator.constraints.UUID
-    private UUID libraryCard;
+    private String libraryCard;
 
     public User() {}
 
@@ -30,7 +28,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public User(String name, String phoneNumber, String emailAddress, UUID libraryCard) {
+    public User(String name, String phoneNumber, String emailAddress, String libraryCard) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
