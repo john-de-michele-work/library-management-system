@@ -126,7 +126,7 @@ public final class IssueBookUtilIssueBookTest {
         assertEquals(GOOD_TITLE, response.getTitle(), "Title not empty!");
         assertEquals(NOT_FOUND_USER, response.getUser(), "User not empty!");
         assertNull(response.getAvailability(), "Availability not null!");
-        assertEquals(0, response.getAvailableCopiesLeft(), "Available copies lft does not match!");
+        assertEquals(0, response.getAvailableCopiesLeft(), "Available copies left does not match!");
     }
 
     @Test
@@ -138,7 +138,7 @@ public final class IssueBookUtilIssueBookTest {
         assertEquals(NOT_FOUND_TITLE, response.getTitle(), "Title not empty!");
         assertEquals(GOOD_USER, response.getUser(), "User not empty!");
         assertNull(response.getAvailability(), "Availability not null!");
-        assertEquals(0, response.getAvailableCopiesLeft(), "Available copies lft does not match!");
+        assertEquals(0, response.getAvailableCopiesLeft(), "Available copies left does not match!");
     }
 
     @Test
