@@ -1,0 +1,6 @@
+insert into Book (title, author, isbn, publicationYear, totalCopyCount, availableCopyCount) values ('Java in Action', 'James Java', '0123456789', '2020', '1', '1')
+insert into Book (title, author, isbn, publicationYear, totalCopyCount, availableCopyCount) values ('Serendipity', 'Amy Van Gogh', '86688666544', '2023', '2', '2')
+insert into Book (title, author, isbn, publicationYear, totalCopyCount, availableCopyCount) values ('Cats', 'Soup de Michele', '9393939393', '2024', '1', '1')
+insert into Users (name, phoneNumber, emailAddress, libraryCard) values ('Alan Axeman', '425-829-8765', 'aaxeman@axeman.com', '9875777577')
+insert into Users (name, phoneNumber, emailAddress, libraryCard) values ('Becky Bubbles', '206-499-1234', 'bblady@gmail.com', '8775777577')
+insert into Users (name, phoneNumber, emailAddress, libraryCard) values ('Charles Chou', '360-222-5721', 'chou@computer.com', '3457277577')
