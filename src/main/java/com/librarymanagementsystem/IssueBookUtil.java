@@ -26,7 +26,7 @@ public final class IssueBookUtil {
         String message = "issued";
         List<String> errorMessages = new LinkedList<>();
 
-        InternalResponse ir = issueBookErrorCheck(title, user);
+        InternalResponse ir = errorCheck(title, user);
 
         if (ir.isError()) {
             return new IssuedBookResponse("", "", null, 0,
@@ -78,7 +78,7 @@ public final class IssueBookUtil {
                 books.getFirst().getAvailableCopyCount(), code, message, errorMessages);
     }
 
-    private InternalResponse issueBookErrorCheck(String title, String user) {
+    private InternalResponse errorCheck(String title, String user) {
         InternalResponse ir = new InternalResponse();
 
         if ((null == title) || title.isBlank()) {
