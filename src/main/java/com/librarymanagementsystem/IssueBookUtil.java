@@ -33,7 +33,7 @@ public final class IssueBookUtil {
                     ir.getCode(), ir.getMessage(), ir.getErrorMessages());
         }
 
-        List<User> users = session.createSelectionQuery("from User u where u.name = :user", User.class)
+        List<User> users = session.createSelectionQuery("from Users u where u.name = :user", User.class)
                 .setParameter("user", user)
                 .getResultList();
 

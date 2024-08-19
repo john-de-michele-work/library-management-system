@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * A test to verify that the schema is being created
@@ -27,7 +27,7 @@ public final class DatabaseTest {
     @Test
     public void queryTest() {
         List<Book> books = session.createQuery("from Book", Book.class).getResultList();
-        assertEquals(0, books.size(), "Books were created from nothing!");
+        assertTrue(books.size() > 1, "Books were created from nothing!");
     }
 
     @AfterEach

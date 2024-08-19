@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
-@Entity(name = "User")
+@Entity(name = "Users")
 public class User {
 
     @Id

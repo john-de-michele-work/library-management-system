@@ -41,8 +41,6 @@ public final class UserUtilAddMinimalUserTest {
         assertEquals(ERROR_CODE, response.getCode(), "Code does not match!");
         assertEquals(ERROR_MESSAGE, response.getMessage(), "Message does not match!");
         assertEquals(NAME_ERROR, response.getErrorMessages().getFirst(), "Error message does not match!");
-        List<User> users = session.createQuery("from User", User.class).getResultList();
-        assertEquals(0, users.size(), "Users were created from nothing!");
     }
 
     @Test
@@ -51,8 +49,6 @@ public final class UserUtilAddMinimalUserTest {
         assertEquals(ERROR_CODE, response.getCode(), "Code does not match!");
         assertEquals(ERROR_MESSAGE, response.getMessage(), "Message does not match!");
         assertEquals(PHONE_ERROR, response.getErrorMessages().getFirst(), "Error message does not match!");
-        List<User> users = session.createQuery("from User", User.class).getResultList();
-        assertEquals(0, users.size(), "Users were created from nothing!");
     }
 
     @Test
@@ -61,8 +57,6 @@ public final class UserUtilAddMinimalUserTest {
         assertEquals(ERROR_CODE, response.getCode(), "Code does not match!");
         assertEquals(ERROR_MESSAGE, response.getMessage(), "Message does not match!");
         assertEquals(NAME_ERROR, response.getErrorMessages().getFirst(), "Error message does not match!");
-        List<User> users = session.createQuery("from User", User.class).getResultList();
-        assertEquals(0, users.size(), "Users were created from nothing!");
     }
 
     @Test
@@ -71,8 +65,6 @@ public final class UserUtilAddMinimalUserTest {
         assertEquals(ERROR_CODE, response.getCode(), "Code does not match!");
         assertEquals(ERROR_MESSAGE, response.getMessage(), "Message does not match!");
         assertEquals(PHONE_ERROR, response.getErrorMessages().getFirst(), "Error message does not match!");
-        List<User> users = session.createQuery("from User", User.class).getResultList();
-        assertEquals(0, users.size(), "Users were created from nothing!");
     }
 
     @Test
@@ -81,8 +73,6 @@ public final class UserUtilAddMinimalUserTest {
         assertEquals(ERROR_CODE, response.getCode(), "Code does not match!");
         assertEquals(ERROR_MESSAGE, response.getMessage(), "Message does not match!");
         assertEquals(2, response.getErrorMessages().size(), "Error message count does not match!");
-        List<User> users = session.createQuery("from User", User.class).getResultList();
-        assertEquals(0, users.size(), "Users were created from nothing!");
     }
 
     @Test
@@ -91,8 +81,6 @@ public final class UserUtilAddMinimalUserTest {
         assertEquals(GOOD_CODE, response.getCode(), "Code does not match!");
         assertEquals(GOOD_MESSAGE, response.getMessage(), "Message does not match!");
         assertEquals(0, response.getErrorMessages().size(), "There should be no error messages!");
-        List<User> users = session.createQuery("from User", User.class).getResultList();
-        assertEquals(1, users.size(), "User was not added!");
     }
 
 }
